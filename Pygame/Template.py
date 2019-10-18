@@ -12,16 +12,20 @@
  
 import pygame
  
-# Define some colors
+# Define some colors (red, green, blue)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+YELLOW =9255, 255, 0)
  
 pygame.init()
  
-# Set the width and height of the screen [width, height]
-size = (700, 500)
+# Set the width and height of the screen [WIDTH, HEIGHT]
+WIDTH = 700
+HEIGHT = 500
+size = (WIDTH,HEIGHT)
 screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("My Game")
@@ -60,4 +64,4 @@ while not done:
  
 # Close the window and quit.
 pygame.quit()
-﻿
+
