@@ -20,7 +20,7 @@ HEIGHT = 500
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("Template")
+pygame.display.set_caption("TEXT & RECT DRAWING")
 
 
 # loop until the user clicks the close button
