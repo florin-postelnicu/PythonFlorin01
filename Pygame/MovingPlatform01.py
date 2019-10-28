@@ -81,6 +81,8 @@ while not done:
     screen.blit(text, [250,300])
 
     # --- Draw rectangles
+    if (plat1_x < -150 or plat1_x > WIDTH +150):
+        plat1_x = plat1_x%(WIDTH + 150)
     plat1 = pygame.draw.rect(screen, GREEN, [plat1_x, 200, 150, 50])
     plat2 = pygame.draw.rect(screen, RED, [250, 75, 150, 50], 3)
 
