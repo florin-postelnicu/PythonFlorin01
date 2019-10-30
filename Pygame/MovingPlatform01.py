@@ -45,16 +45,14 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+       
         elif event.type == pygame.KEYDOWN:
-
-
             if event.key == pygame.K_LEFT:
                dx = -10
             if event.key == pygame.K_RIGHT:
                 dx= 10
 
         elif event.type == pygame.KEYUP:
-
             if ( event.key == pygame.K_RIGHT) or ( event.key == pygame.K_LEFT):
                 dx = 0
 
@@ -62,6 +60,8 @@ while not done:
 
     # --- Game logic should go here
     plat1_x = plat1_x + dx
+     if (plat1_x < -150 or plat1_x > WIDTH +150):
+        plat1_x = plat1_x % (WIDTH + 150)
 
 
 
@@ -81,8 +81,7 @@ while not done:
     screen.blit(text, [250,300])
 
     # --- Draw rectangles
-    if (plat1_x < -150 or plat1_x > WIDTH +150):
-        plat1_x = plat1_x%(WIDTH + 150)
+   
     plat1 = pygame.draw.rect(screen, GREEN, [plat1_x, 200, 150, 50])
     plat2 = pygame.draw.rect(screen, RED, [250, 75, 150, 50], 3)
 
