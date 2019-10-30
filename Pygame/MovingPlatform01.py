@@ -1,14 +1,15 @@
 
 
 """
- Pygame base template for opening a window
+**********************
 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
+Write here some info about you and your program!
+Your name:
+Program's Objective :
+Date when created :
+Resources :
 
- Explanation video: http://youtu.be/vRB_983kUMc
+**********************
 """
 
 import pygame
@@ -28,6 +29,9 @@ WIDTH = 700
 HEIGHT = 500
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
+# initiate the variables for motion here
+# if you do it inside the while loop, then the rectangle
+# would not move
 plat1_x = 250
 dx = 0
 
@@ -42,30 +46,30 @@ clock = pygame.time.Clock()
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pygame.event.get():# here you choose what are the controls of the window
+        if event.type == pygame.QUIT: # This closes the window if pressing the x button
             done = True
        
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+        elif event.type == pygame.KEYDOWN: # This is to control the keys of the keyboard
+            if event.key == pygame.K_LEFT: # If pressing LEFT the velocity is negative
                dx = -10
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT: # if pressing RIGHT the velocity  is positive
                 dx= 10
 
-        elif event.type == pygame.KEYUP:
+        elif event.type == pygame.KEYUP: # This is to ensure when keys are not pressed the motion stops
             if ( event.key == pygame.K_RIGHT) or ( event.key == pygame.K_LEFT):
                 dx = 0
 
 
 
     # --- Game logic should go here
-    plat1_x = plat1_x + dx
-     if (plat1_x < -150 or plat1_x > WIDTH +150):
-        plat1_x = plat1_x % (WIDTH + 150)
-
-
-
-
+  
+     if plat1_x < -150 or plat1_x > WIDTH : # This takes care of keeping the platform inside
+        dx = -dx                            # your window, and not loosing it
+                                            # whenever the platform reaches the end of the 
+                                            # window, by changing the sign of velocity
+                                            # it will be changed the direction of motion
+     plat1_x = plat1_x + dx
     # --- Screen-clearing code goes here
 
     # Here, we clear the screen to white. Don't put other drawing commands
