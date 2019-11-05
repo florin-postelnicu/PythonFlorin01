@@ -9,6 +9,8 @@ Resources :
 """
 
 import pygame
+import math
+import random
 
 # Define some colors (red, green, blue)
 BLACK = (0, 0, 0)
@@ -30,8 +32,11 @@ screen = pygame.display.set_mode(size)
 # would not move
 plat1_x = 250
 dx = 0
-ball_y = 25
+
+ball_y = 50
+ball_x = 300
 dy = 10
+dir = 0
 
 pygame.display.set_caption("My Game")
 
@@ -67,8 +72,12 @@ while not done:
         # it will be changed the direction of motion
     plat1_x = plat1_x + dx
 
-    if ball_y <10 or ball_y >HEIGHT :
+    if ball_y <10 or ball_y > HEIGHT -10 :
         dy = - dy
+
+    if ball_x <10 or ball_x > WIDTH -10:
+        dir = -dir
+    ball_x = ball_x + dir
     ball_y = ball_y + dy
     # --- Screen-clearing code goes here
 
@@ -87,11 +96,18 @@ while not done:
     # --- Draw rectangles
 
     plat1 = pygame.draw.rect(screen, GREEN, [plat1_x, 200, 150, 10])
-    plat2 = pygame.draw.rect(screen, RED, [250, 75, 150, 50], 3)
-    ball = pygame.draw.circle(screen, RED, (250, ball_y), 10)
+    plat2 = pygame.draw.rect(screen, BLUE, [250, 75, 150, 10])
+    ball = pygame.draw.circle(screen, RED, (ball_x, ball_y + dy),10)
 
-    if (ball.colliderect(plat1)):
+    # --- Collision
+
+    if ball.colliderect(plat1):
+        dir = random.randint(-5,5)
         dy = - dy
+
+
+
+
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
