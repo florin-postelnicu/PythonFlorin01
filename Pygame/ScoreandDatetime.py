@@ -127,9 +127,7 @@ while not done:
     screen.blit(backgd, (0,0))
 
     # --- Drawing code should go here
-    # font = pygame.font.SysFont('Calibri', 25, True, True)
-    # text = font.render("Hello World !!!", True, BLUE, WHITE)
-    # screen.blit(text, [250, 300])
+  
     write_msg(" Player1 : " + str(score_pl1),10, 20)
     write_msg("Player2 : " +str(score_pl2), 580, 20)
     write_msg(str(date), 200, 20)
