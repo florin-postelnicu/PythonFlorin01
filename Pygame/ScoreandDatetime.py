@@ -8,6 +8,16 @@ Resources :
 **********************
 """
 
+def boom():
+    pygame.mixer.music.pause()  # This stops the music when boom() activated
+    time.sleep(0.05)
+    pygame.mixer.Sound.play(hit)  # the sound at the collision
+    pygame.mixer.music.unpause()  # restart the music
+
+def write_msg(text, x_txt, y_txt):
+    font = pygame.font.SysFont('gigi', 25, True, True)
+    text = font.render(text, True, BLUE, WHITE)
+    screen.blit(text, [x_txt, y_txt])
 import pygame
 import math
 import random
@@ -45,6 +55,7 @@ score_pl1 = 0
 score_pl2 = 0
 
 pygame.display.set_caption("My Game")
+print(pygame.font.get_fonts())
 
 
 #
@@ -61,16 +72,6 @@ pygame.mixer.music.load("TimeTravel.mp3")
 pygame.mixer.music.play(-1) # the sound would be played indefinitely
 
 
-def boom():
-    pygame.mixer.music.pause()  # This stops the music when boom() activated
-    time.sleep(0.05)
-    pygame.mixer.Sound.play(hit)  # the sound at the collision
-    pygame.mixer.music.unpause()  # restart the music
-
-def write_msg(text, x_txt, y_txt):
-    font = pygame.font.SysFont('Calibri', 25, True, True)
-    text = font.render(text, True, BLUE, WHITE)
-    screen.blit(text, [x_txt, y_txt])
 
 
 # Loop until the user clicks the close button.
@@ -95,6 +96,7 @@ while not done:
         elif event.type == pygame.KEYUP:  # This is to ensure when keys are not pressed the motion stops
             if (event.key == pygame.K_RIGHT) or (event.key == pygame.K_LEFT):
                 dx = 0
+
 
         # --- Game logic should go here
 
@@ -140,7 +142,8 @@ while not done:
 
     # --- Collision
 
-    if ball.colliderect(plat1):
+    if ball.colliderect(plat1) :
+
         boom()
         score_pl1 = score_pl1 +1
         dir = random.randint(-5,5)
