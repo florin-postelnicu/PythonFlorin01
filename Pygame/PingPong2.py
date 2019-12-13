@@ -156,12 +156,12 @@ while not done:
     date = datetime.datetime.now()
 
 
-    if(score_pl1 >= 21 and (score_pl1- score_pl2>= 2)):
+    if(score_pl1 > 21 and (score_pl1- score_pl2>= 2)):
         set_1 = set_1 + 1
         score_pl2 = 0
         score_pl1 = 0
 
-    if (score_pl2 >= 21 and (score_pl2 - score_pl1 >= 2)):
+    if (score_pl2 > 21 and (score_pl2 - score_pl1 >= 2)):
         set_2 = set_2 + 1
         score_pl2 = 0
         score_pl1 = 0
