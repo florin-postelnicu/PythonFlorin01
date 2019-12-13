@@ -62,14 +62,15 @@ print(pygame.font.get_fonts())
 
 #
 # THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-# my_file = os.path.join(THIS_FOLDER, 'C:/Users/postelnicu/PycharmProjects/Star1/venv/Sounds/whip01.ogg')
+# my_file = os.path.join(THIS_FOLDER, 'C:/Users/postelnicu/PycharmProjects/Star1/venv/Sounds/whipmod.ogg')
 
 # import pictures
 backgd = pygame.image.load("backg1.jpg").convert()
+pygame.transform.scale(backgd, (700,500),screen)
 
 # import music
-hit = pygame.mixer.Sound('C:/Users/postelnicu/PycharmProjects/Star1/venv/Sounds/whip01.ogg')
-pygame.mixer.music.load("TimeTravel.mp3")
+hit = pygame.mixer.Sound('C:/Users/postelnicu/PycharmProjects/Star1/venv/Sounds/whipmod.ogg')
+pygame.mixer.music.load("//ahs-wl.puhsd.loc/staff/postelnicu/Desktop/ResourcesPy/machine.mp3")
 
 pygame.mixer.music.play(-1) # the sound would be played indefinitely
 
@@ -118,10 +119,7 @@ while not done:
         ball_x = WIDTH -11
         dbx = -20
         score_pl2 = score_pl2 + 1
-    # elif ball_x > WIDTH +10:
-    #     ball_y = random.randint(10, HEIGHT - 10)
-    #     ball_x = 11
-    #     dbx = 20
+
     elif ball_x> WIDTH:
         dbx = - dbx
     ball_x = ball_x + dbx
@@ -135,13 +133,11 @@ while not done:
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    # screen.fill(YELLOW)  Replace this comand with a screen.blit(background , (0,0))
+
     screen.blit(backgd, (0,0))
 
     # --- Drawing code should go here
-    # font = pygame.font.SysFont('Calibri', 25, True, True)
-    # text = font.render("Hello World !!!", True, BLUE, WHITE)
-    # screen.blit(text, [250, 300])
+
     write_msg(" Player1 : " + str(score_pl1),10, 20)
     write_msg("Player2 : " +str(score_pl2), 500, 20)
     # write_msg(str(date), 200, 20)
